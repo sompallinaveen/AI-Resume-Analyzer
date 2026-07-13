@@ -47,3 +47,17 @@ def get_job(
         )
         .first()
     )
+
+def get_job(
+    db: Session,
+    job_id: int,
+    user_id: int,
+):
+    return (
+        db.query(Job)
+        .filter(
+            Job.id == job_id,
+            Job.user_id == user_id,
+        )
+        .first()
+    )
