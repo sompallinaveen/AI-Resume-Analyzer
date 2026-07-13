@@ -1,0 +1,38 @@
+Python
+Java
+C
+C++
+SQL
+MySQL
+PostgreSQL
+MongoDB
+FastAPI
+Flask
+Django
+Git
+GitHub
+Docker
+Kubernetes
+AWS
+Azure
+GCP
+TensorFlow
+PyTorch
+Scikit-learn
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Machine Learning
+Deep Learning
+NLP
+Computer Vision
+LangChain
+FAISS
+OpenAI
+Gemini
+React
+JavaScript
+HTML
+CSS
+Linux
