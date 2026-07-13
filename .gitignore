@@ -41,3 +41,6 @@ data/resumes/
 # -------------------------
 .DS_Store
 Thumbs.db
+
+# Temporary test scripts
+test_embedding.py
