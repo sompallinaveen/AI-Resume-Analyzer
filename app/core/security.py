@@ -14,19 +14,16 @@ from app.models.user import User
 # Password hashing
 pwd_context = CryptContext(
     schemes=["bcrypt"],
-    deprecated="auto"
+    deprecated="auto",
 )
 
 # OAuth2
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl="/auth/login"
+    tokenUrl="/auth/login",
 )
 
 
 def hash_password(password: str) -> str:
-    """
-    Hash a plain-text password.
-    """
     return pwd_context.hash(password)
 
 
@@ -34,9 +31,6 @@ def verify_password(
     plain_password: str,
     hashed_password: str,
 ) -> bool:
-    """
-    Verify a plain password against its hash.
-    """
     return pwd_context.verify(
         plain_password,
         hashed_password,
@@ -44,9 +38,6 @@ def verify_password(
 
 
 def create_access_token(data: dict) -> str:
-    """
-    Create a JWT access token.
-    """
     to_encode = data.copy()
 
     expire = datetime.now(UTC) + timedelta(
@@ -66,10 +57,13 @@ def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db),
 ) -> User:
-    print(">>> get_current_user() called")
-    """
-    Validate JWT and return the authenticated user.
-    """
+
+    print("\n" + "=" * 70)
+    print("get_current_user() called")
+    print("=" * 70)
+
+    print("Received Token:")
+    print(token)
 
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -84,17 +78,33 @@ def get_current_user(
             algorithms=[settings.ALGORITHM],
         )
 
-        email: str | None = payload.get("sub")
+        print("\nDecoded Payload:")
+        print(payload)
+
+        email = payload.get("sub")
+
+        print("\nEmail extracted from token:")
+        print(email)
 
         if email is None:
+            print("ERROR: 'sub' claim missing.")
             raise credentials_exception
 
-    except JWTError:
+    except JWTError as e:
+        print("\nJWT Decode Error:")
+        print(e)
         raise credentials_exception
 
     user = get_user_by_email(db, email)
 
+    print("\nUser fetched from database:")
+    print(user)
+
     if user is None:
+        print("ERROR: User not found.")
         raise credentials_exception
+
+    print("\nAuthentication Successful!")
+    print("=" * 70)
 
     return user
