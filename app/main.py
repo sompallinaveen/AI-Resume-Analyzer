@@ -6,9 +6,10 @@ from app.api.ats import router as ats_router
 from app.api.home import router as home_router
 from app.api.resume import router as resume_router
 from app.database.database import Base, engine
+from app.models import resume, user
+from app.api.auth import router as auth_router
 
 # Import models so SQLAlchemy registers them
-from app.models import resume
 from app.core.config import settings
 
 @asynccontextmanager
@@ -26,3 +27,4 @@ app = FastAPI(
 app.include_router(home_router)
 app.include_router(resume_router)
 app.include_router(ats_router)
+app.include_router(auth_router)
