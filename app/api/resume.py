@@ -68,11 +68,13 @@ async def upload_resume(
     # Save metadata
     saved_resume = create_resume(
         db=db,
+        user_id=current_user.id,
         original_filename=file.filename,
         stored_filename=stored_filename,
         file_path=str(file_path),
         extracted_text=result["text"],
     )
+
 
     return {
         "resume_id": saved_resume.id,
@@ -94,7 +96,11 @@ def get_resume_by_id(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    resume = get_resume(db, resume_id)
+    resume = get_resume(
+        db=db,
+        resume_id=resume_id,
+        user_id=current_user.id,
+    )
 
     if resume is None:
         raise HTTPException(
@@ -113,4 +119,7 @@ def get_all_uploaded_resumes(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    return get_all_resumes(db)
+    return get_all_resumes(
+        db=db,
+        user_id=current_user.id,
+    )
