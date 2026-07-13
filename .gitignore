@@ -21,6 +21,14 @@ __pycache__/
 .vscode/
 .idea/
 
+# Uploads
+uploads/
+app/uploads/
+
+# React
+frontend/node_modules/
+frontend/dist/
+
 # -------------------------
 # Local Database
 # -------------------------

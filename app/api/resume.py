@@ -25,6 +25,12 @@ from app.schemas.resume_schema import (
     ResumeResponse,
 )
 from app.services.resume_service import process_resume
+from app.crud.resume_crud import (
+    create_resume,
+    get_resume,
+    get_all_resumes,
+    delete_resume,
+)
 
 router = APIRouter(
     prefix="/resume",
@@ -123,3 +129,26 @@ def get_all_uploaded_resumes(
         db=db,
         user_id=current_user.id,
     )
+
+@router.delete("/{resume_id}")
+def delete_uploaded_resume(
+    resume_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+
+    deleted = delete_resume(
+        db=db,
+        resume_id=resume_id,
+        user_id=current_user.id,
+    )
+
+    if not deleted:
+        raise HTTPException(
+            status_code=404,
+            detail="Resume not found",
+        )
+
+    return {
+        "message": "Resume deleted successfully"
+    }

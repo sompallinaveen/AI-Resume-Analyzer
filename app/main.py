@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from app.api.ats import router as ats_router
 from app.api.auth import router as auth_router
 from app.api.home import router as home_router
@@ -28,6 +28,16 @@ app = FastAPI(
     version=settings.APP_VERSION,
     description="Backend API for AI Resume Analyzer",
     lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Routers

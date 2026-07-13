@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-
+from pathlib import Path
 from app.models.resume import Resume
 
 
@@ -65,3 +65,36 @@ def get_all_resumes(
         .order_by(Resume.uploaded_at.desc())
         .all()
     )
+
+
+def delete_resume(
+    db: Session,
+    resume_id: int,
+    user_id: int,
+):
+    """
+    Delete a resume owned by the user.
+    """
+
+    resume = (
+        db.query(Resume)
+        .filter(
+            Resume.id == resume_id,
+            Resume.user_id == user_id,
+        )
+        .first()
+    )
+
+    if resume is None:
+        return None
+
+    # Delete PDF from uploads folder
+    try:
+        Path(resume.file_path).unlink(missing_ok=True)
+    except Exception:
+        pass
+
+    db.delete(resume)
+    db.commit()
+
+    return True
