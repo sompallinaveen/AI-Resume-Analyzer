@@ -1,4 +1,11 @@
 # 🤖 AI Resume Analyzer
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green?logo=fastapi)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql)
+![Railway](https://img.shields.io/badge/Backend-Railway-black?logo=railway)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 An AI-powered Resume Analyzer that evaluates resumes against job descriptions using semantic similarity and Large Language Models (LLMs). The application calculates ATS compatibility, identifies matched and missing skills, generates AI-driven feedback, and suggests resume improvements and interview questions.
 
