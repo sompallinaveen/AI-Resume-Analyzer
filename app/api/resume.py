@@ -13,11 +13,6 @@ from sqlalchemy.orm import Session
 
 from app.core.config import UPLOAD_DIR
 from app.core.security import get_current_user
-from app.crud.resume_crud import (
-    create_resume,
-    get_resume,
-    get_all_resumes,
-)
 from app.database.dependencies import get_db
 from app.models.user import User
 from app.schemas.resume_schema import (
