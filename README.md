@@ -128,11 +128,11 @@ H --> A
 
 ### Generated PDF Report
 
-![PDF Report 1](screenshots/pdf-report1.png)
+![PDF Report 1](screenshots/pdf_report1.png)
 
-![PDF Report 2](screenshots/pdf-report2.png)
+![PDF Report 2](screenshots/pdf_report2.png)
 
-![PDF Report 3](screenshots/pdf-report3.png)
+![PDF Report 3](screenshots/pdf_report3.png)
 
 ## 📂 Project Structure
 
