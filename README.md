@@ -71,24 +71,40 @@ https://github.com/YOUR_USERNAME/AI_Resume_Analyzer
 - GitHub
 - VS Code
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
-```text
-                React Frontend
-                     │
-                     ▼
-           FastAPI Backend (Railway)
-                     │
-      ┌──────────────┴──────────────┐
-      ▼                             ▼
-PostgreSQL (Neon)         Sentence Transformers
-      │                             │
-      └──────────────┬──────────────┘
-                     ▼
-             Groq Llama 3.3 API
+```mermaid
+flowchart TD
+
+A[React Frontend<br/>Vercel]
+--> B[FastAPI Backend<br/>Railway]
+
+B --> C[(PostgreSQL<br/>Neon)]
+
+B --> D[Sentence Transformers]
+
+B --> E[Groq Llama 3.3]
+
+D --> F[Semantic ATS Matching]
+
+E --> G[AI Feedback]
+
+F --> H[Analysis Results]
+
+G --> H
+
+H --> A
 ```
 
 ## 📸 Screenshots
+
+### Register
+
+![Register](screenshots/register.png)
+
+### Login
+
+![Login](screenshots/login.png)
 
 ### Dashboard
 
@@ -96,13 +112,64 @@ PostgreSQL (Neon)         Sentence Transformers
 
 ### Upload Resume
 
-![Upload](screenshots/upload.png)
+![Upload](screenshots/resume_upload.png)
 
 ### AI Analysis
 
-![Analysis](screenshots/analysis.png)
+![Analysis](screenshots/analyze.png)(screenshots/analyze_resume.png)(screenshots/analyze_resume1.png)
 
 ### Resume History
 
-![History](screenshots/history.png)
+![History](screenshots/resume_history.png)
 
+### Generated PDF Report
+
+![PDF](screenshots/pdf-report1.png)(screenshots/pdf-report2.png)(screenshots/pdf-report3.png)
+
+## 📂 Project Structure
+
+```text
+AI_Resume_Analyzer/
+│
+├── app/
+│   ├── api/
+│   ├── core/
+│   ├── crud/
+│   ├── database/
+│   ├── models/
+│   ├── parsers/
+│   ├── prompts/
+│   ├── schemas/
+│   ├── services/
+│   └── utils/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── utils/
+│
+├── screenshots/
+├── requirements.txt
+└── README.md
+```
+
+## 🚀 Future Improvements
+
+- User profile management
+- Resume version comparison
+- Multi-language resume support
+- Resume keyword optimization
+- AI-powered cover letter generation
+- Recruiter dashboard
+- Email notifications
+- Docker containerization
+
+## 👨‍💻 Author
+
+**Sompalli Naveen Kumar**
+
+- GitHub: https://github.com/sompallinaveen
+- LinkedIn: *(www.linkedin.com/in/naveen-kumar-ba6867290)*
