@@ -112,19 +112,27 @@ H --> A
 
 ### Upload Resume
 
-![Upload](screenshots/resume_upload.png)
+![Upload Resume](screenshots/resume_upload.png)
 
 ### AI Analysis
 
-![Analysis](screenshots/analyze.png)(screenshots/analyze_resume.png)(screenshots/analyze_resume1.png)
+![AI Analysis 1](screenshots/analyze.png)
+
+![AI Analysis 2](screenshots/analyze_resume.png)
+
+![AI Analysis 3](screenshots/analyze_resume1.png)
 
 ### Resume History
 
-![History](screenshots/resume_history.png)
+![Resume History](screenshots/resume_history.png)
 
 ### Generated PDF Report
 
-![PDF](screenshots/pdf-report1.png)(screenshots/pdf-report2.png)(screenshots/pdf-report3.png)
+![PDF Report 1](screenshots/pdf-report1.png)
+
+![PDF Report 2](screenshots/pdf-report2.png)
+
+![PDF Report 3](screenshots/pdf-report3.png)
 
 ## 📂 Project Structure
 
