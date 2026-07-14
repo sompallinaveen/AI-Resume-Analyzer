@@ -69,6 +69,3 @@ def health_check():
         "status": "healthy",
         "message": "AI Resume Analyzer API is running"
     }
-
-
-print("AI Router Registered")

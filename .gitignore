@@ -14,6 +14,8 @@ __pycache__/
 # Environment Variables
 # -------------------------
 .env
+.env.*
+!.env.example
 
 # -------------------------
 # IDE
@@ -21,11 +23,15 @@ __pycache__/
 .vscode/
 .idea/
 
+# -------------------------
 # Uploads
+# -------------------------
 uploads/
 app/uploads/
 
+# -------------------------
 # React
+# -------------------------
 frontend/node_modules/
 frontend/dist/
 
@@ -33,6 +39,7 @@ frontend/dist/
 # Local Database
 # -------------------------
 resume_analyzer.db
+*.db
 
 # -------------------------
 # Uploaded Files
@@ -50,5 +57,7 @@ data/resumes/
 .DS_Store
 Thumbs.db
 
-# Temporary test scripts
+# -------------------------
+# Temporary Files
+# -------------------------
 test_embedding.py

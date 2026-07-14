@@ -37,8 +37,6 @@ def analyze_resume(
             "resume_improvements": [],
             "interview_questions": [],
         }
-    print(ai_feedback)
-
     return {
         "similarity_score": round(similarity, 2),
         "matched_skills": matched_skills,
