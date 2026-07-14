@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-
 import api from "../api/api";
 import { useAuth } from "../context/AuthContext";
 
@@ -99,21 +98,17 @@ function Login() {
             {loading ? "Logging in..." : "Login"}
           </button>
 
+          <p className="text-center mt-6">
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              className="text-blue-600 font-semibold"
+            >
+              Register
+            </Link>
+          </p>
+
         </form>
-
-        <p className="mt-6 text-center">
-
-          Don't have an account?
-
-          <Link
-            to="/register"
-            className="text-blue-600 ml-2"
-          >
-            Register
-          </Link>
-
-        </p>
-
       </div>
 
     </div>
