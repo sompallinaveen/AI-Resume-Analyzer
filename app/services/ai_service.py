@@ -28,10 +28,16 @@ def analyze_resume(
             resume_text,
             job_description,
         )
+        
     except Exception:
-        feedback = (
-            "AI feedback is currently unavailable."
-        )
+        ai_feedback = {
+            "overall_feedback": "AI feedback is currently unavailable.",
+            "strengths": [],
+            "weaknesses": [],
+            "resume_improvements": [],
+            "interview_questions": [],
+        }
+    print(ai_feedback)
 
     return {
         "similarity_score": round(similarity, 2),

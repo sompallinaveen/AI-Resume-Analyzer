@@ -162,19 +162,83 @@ function Analysis() {
 
             </AnalysisCard>
 
-            {/* AI Feedback */}
+            {/* Overall Feedback */}
 
             <div className="lg:col-span-2">
 
-              <AnalysisCard title="AI Feedback">
+              <AnalysisCard title="Overall Feedback">
 
-                <pre className="whitespace-pre-wrap font-sans leading-7 text-gray-700">
-                  {result.ai_feedback}
-                </pre>
+                <p className="leading-7 text-gray-700">
+                  {result.overall_feedback}
+                </p>
 
               </AnalysisCard>
 
             </div>
+
+            {/* Strengths */}
+
+            <AnalysisCard title="Strengths">
+
+              <ul className="space-y-2">
+
+                {result.strengths.map((item, index) => (
+                  <li key={index}>
+                    ✅ {item}
+                  </li>
+                ))}
+
+              </ul>
+
+            </AnalysisCard>
+
+            {/* Weaknesses */}
+
+            <AnalysisCard title="Weaknesses">
+
+              <ul className="space-y-2">
+
+                {result.weaknesses.map((item, index) => (
+                  <li key={index}>
+                    ⚠️ {item}
+                  </li>
+                ))}
+
+              </ul>
+
+            </AnalysisCard>
+
+            {/* Resume Improvements */}
+
+            <AnalysisCard title="Resume Improvements">
+
+              <ul className="space-y-2">
+
+                {result.resume_improvements.map((item, index) => (
+                  <li key={index}>
+                    ✔ {item}
+                  </li>
+                ))}
+
+              </ul>
+
+            </AnalysisCard>
+
+            {/* Interview Questions */}
+
+            <AnalysisCard title="Interview Questions">
+
+              <ol className="list-decimal pl-6 space-y-2">
+
+                {result.interview_questions.map((item, index) => (
+                  <li key={index}>
+                    {item}
+                  </li>
+                ))}
+
+              </ol>
+
+            </AnalysisCard>
 
           </div>
 
