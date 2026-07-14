@@ -118,7 +118,7 @@ def get_resume_by_id(
 
 
 @router.get(
-    "/",
+    "",
     response_model=list[ResumeResponse],
 )
 def get_all_uploaded_resumes(
