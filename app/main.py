@@ -2,12 +2,17 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.api.dashboard import router as dashboard_router
 from app.core.config import settings
 from app.database.database import Base, engine
 
 # Import models so SQLAlchemy registers them
-from app.models import job, resume, user
+from app.models import (
+    job,
+    resume,
+    user,
+    analysis,
+)
 
 # Routers
 from app.api.home import router as home_router
@@ -55,6 +60,7 @@ app.include_router(ats_router)
 app.include_router(job_router)
 app.include_router(matching_router)
 app.include_router(ai_router)
+app.include_router(dashboard_router)
 
 
 @app.get("/health")

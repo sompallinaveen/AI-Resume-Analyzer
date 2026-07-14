@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import {
   FaUpload,
@@ -8,6 +9,8 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
+import api from "../api/api";
+
 import DashboardCard from "../components/DashboardCard";
 import StatsCard from "../components/StatsCard";
 import { useAuth } from "../context/AuthContext";
@@ -16,6 +19,26 @@ function Dashboard() {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
+  const [stats, setStats] = useState({
+    total_resumes: 0,
+    total_analyses: 0,
+    average_ats: 0,
+  });
+
+  useEffect(() => {
+    async function loadStats() {
+      try {
+        const response = await api.get("/dashboard/stats");
+
+        setStats(response.data);
+      } catch (error) {
+        console.error("Failed to load dashboard stats:", error);
+      }
+    }
+
+    loadStats();
+  }, []);
+
   function handleLogout() {
     logout();
     navigate("/");
@@ -23,6 +46,8 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-100">
+
+      {/* Header */}
 
       <header className="bg-white shadow">
 
@@ -34,7 +59,7 @@ function Dashboard() {
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700"
+            className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition"
           >
             <FaSignOutAlt />
             Logout
@@ -44,37 +69,39 @@ function Dashboard() {
 
       </header>
 
+      {/* Main */}
+
       <main className="max-w-7xl mx-auto p-8">
 
         <h2 className="text-3xl font-bold mb-8">
           Welcome Back 👋
         </h2>
 
-        {/* Stats */}
+        {/* Dashboard Statistics */}
 
         <div className="grid md:grid-cols-3 gap-6 mb-10">
 
           <StatsCard
             title="Resumes"
-            value="1"
+            value={stats.total_resumes}
             color="text-blue-600"
           />
 
           <StatsCard
             title="Analyses"
-            value="1"
+            value={stats.total_analyses}
             color="text-green-600"
           />
 
           <StatsCard
             title="Average ATS"
-            value="82%"
+            value={`${stats.average_ats}%`}
             color="text-purple-600"
           />
 
         </div>
 
-        {/* Actions */}
+        {/* Dashboard Actions */}
 
         <div className="grid md:grid-cols-2 gap-6">
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-
+from app.crud.analysis_crud import create_analysis
 from app.core.security import get_current_user
 from app.database.dependencies import get_db
 
@@ -46,6 +46,13 @@ def analyze(
     result = analyze_resume(
         resume.extracted_text,
         request.job_description,
+    )
+    
+    create_analysis(
+        db=db,
+        user_id=current_user.id,
+        resume_id=resume.id,
+        ats_score=result["similarity_score"],
     )
 
     return result
